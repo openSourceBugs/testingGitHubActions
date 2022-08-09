@@ -1,0 +1,113 @@
+There are many pitfalls and assumptions associated with the following suggested practices for the QA process.
+As there are shops ranging from pure waterfall to Agile/Scrum, the suggestions in this document are geared more towards an "agile" environment and the product in this example would be Turbo Tax.
+
+
+1.  How are business rules and workflow intent captured from the product and engineering teams?
+
+
+    a.  Kickoff.  This can be a 1 on 1 with a business analyst(BA) or product manager (PM), a stand up meeting that pulls in requirements, or a beginning of sprint meeting or another process. 
+A business analyst(BA) or product manager(PM) presents the items (tickets) to be worked on .  
+For example, they may say:
+             "In this ticket, we need to create a tax filer user who should be able to log in and complete their taxes"
+		Another example:
+	     "In this ticket, we need to create a CPA user who should log in and file taxes on behalf of a person"
+
+
+		A third example:
+	"Our test coverage in the audit portion of the application is obsolete.  We need a new test plan in this area with some automated testing"
+
+
+After the general idea is presented,  UX/UI wireframes may be presented alongside the requirements.
+QA is internally thinking about what tests the tickets may impact if there are any existing tests or thinking about what new tests are required to be implemented.  Any questions should be raised at this point.
+
+Assuming the ticket is advanced (no requirements issues, such as a conflict with another requirement, scientifically impossible/infeasible requirements or other issues), the qa should have a good idea what should be tested.  In  any case, a test plan is created for the work that the QA must do and this test plan should be visible to anyone in the organization who wants to see it.  The test plan can reside and be documented in any number of tools documenting what testing is involved (zephyr, testrail,  bugzilla etc).   This test plan should be reviewed by the developer and the BA as a second set of eyes in case the QA test plan needs adjustment.
+
+     b.  In sprint updates
+
+     Invariably,  it is discovered that requirements need to be changed, the scope of work changes, or something unexpected happens during the sprint and things are revised despite best efforts.  As a developer is developing, the BA, developer and QA should be in sync on changes that occur to the original statement of work and the test plan should be revised accordingly.
+
+     c.  other.  There are a variety of places where requirements can come from.  They could be documents/standards/laws/ special requests or anything else.  The important thing to do is to have an understanding of what should be implemented and tested.  The goal is to reduce the ambiguity as much as possible and in some cases, reduce ambiguity to 0 (proof based testing for certain systems under test)
+
+
+
+2.  What screens/buttons/URL’s/workflows the test plan covers
+
+    a.  In the earlier question,  I mentioned UI/UX wireframes.  There currently is a trend to separate UI/UX design from UI/UX implementation at software organizations.  A front end developer does not necessarily know when to use a hamburger menu, an accordian, autocomplete field or any other UI designs when they code. A wireframe removes the ambiguity for both the tester and the developer. These wireframes should be referred to in the test plan.   A specific test would refer to the elements in the wireframe 
+Example test case:
+            i.  User enters URL https://turbotax.intuit.com into the browser and presses enter.
+            ii.  User clicks the "Sign in" button that is displayed in <link to wireframe>
+            iii.  User should be redirected to the sign in page that looks like <link to wireframe>
+
+Another example:
+
+           i.  User enters URL https://turbotax.intuit.com into the browser and presses enter.
+           ii.  The top nav bar should initially look like the one in <link to wireframe>
+    b.  Some companies do not have UI/UX dedicated to providing direction on useability or creating wireframes.  This duty must be assigned to someone who may not perform optimally.
+
+
+3.  How is the test plan kept current as product and dev teams evolve business rules and workflows?
+
+     a.  Updating documentation/wireframes/test plans should be part of the work in a sprint.  When a developer completes a ticket and is ready for QA to take a look,  QA will run tests, update tests, and update test plans.  What really drives this process is the execution of tests.  There may be thousands of tests to execute, and the only way to truly know what needs to be updated is to execute these tests.  No one should be expected to be a living, breathing database of all tests that are executed. This is why automation and other tooling are extremely important.  
+
+4.    What testing methods will be employed for each section of the test/validation system?
+○ Manual testing/button mashing?
+No one has devised a way to completely eliminate manual testing.  They would be the next Turing Award, Clay Mathematics Institute winner, and become instantly famous and beloved(possibly reviled?) by the entire world due to breakthroughs in AI.  That being said, tooling and other process can be implemented to reduce the time it takes to verify things manually.
+Example:
+The QA is required to verify that each button is of certain pixel width using a certain font.  A tool can be implemented to open css tooling automatically to verify pixel perfection.  A pass/fail prompt is presented at each verification and once clicked, testing automatically opens css tooling for the next button. All tests should be organized by priority.  
+
+○ Automated testing via scripts?
+There should be as many of these as possible.  Functional UI testing, API testing, unit testing,  data verification, accesibility testing, security testing, load testing, and other types of testing all have tools that aid in automation.  There does come a point where investing time into an automated test is counter productive.  This is an example of one such test:  Captcha testing.  Captchas are fundamentally designed to defeat automation and should NOT be tested.  Other types of testing that are difficult involve visual aspects such as animations.
+
+
+○ Does the plan recommend dev’s add unit testing and verification? How does verification work?
+Unit testing is largely the realm of developers.  This is a type of whitebox testing which requires direct access to the functions that are being tested.  These tests necessarily reside with the code under test.  There are some processes that require test developers to become full developers but this is not usually the case as there are many aspects of testing that developers will find out of scope.  Unit testing is not one of those things out of scope.
+
+
+○ What tools and languages will you use to build automatic testing systems?
+There are many tools that can be used.  As an example of the tooling used in functional UI testing:
+
+
+Robot Framework (open source free Python testing framework)
+Selenium
+    i.  PHP Facebook binding
+    ii.  Java binding
+    iii.  Python binding
+    iv.  Javascript binding
+    v.  C# binding
+Cypress IO
+CodeCept.js
+Puppeteer
+Ranorex(closed source enterprise solution)
+QTP (desktop application UI testing)
+AutoIT (desktop)
+Sikuli (visual automation)
+Appium (mobile automation for functional UI testing)
+XCUITest (native mobile automation for IOS)
+Espresso (Android mobile automation for IOS)
+SauceLabs (cloud testing)
+Browserstack (cloud testing)
+roll your own in house cloud solution with grid/docker/other cloud tech
+Pick a test running *unit framework:
+      i.  JUnit
+      ii.  TestNG
+      iii.  Pytest
+      iv.  Unittest
+      v.  etc.
+Pick a test plan tool:
+
+      i.  Plain old Jira
+         a.  Zephyr plugin
+      ii. TestRail
+      iii.  Bugzilla
+      iv.  Excel Spreadsheet (not recommended)
+      v.  etc.
+
+To sum up:  There is no lack of choice in the tools used in the QA process.  The above list of tools does not begin to cover the entirety of all tools used by QA engineers.  To give an idea of the number of tools, there are tools for API/load testing, security testing, A/B testing, accesbility testing and others.  It is a bit overwhelming to consider all the tools and the space is constantly evolving.
+My personal prefrence is based on Python tooling.  I like Robot framework and Selenium for browser UI testing.
+
+● What events trigger running and rerunning the test process/suite?
+In general, any version control system commitable change should trigger tests.  Highest priority tests should run first and lower priority tests should be run later.  If any issue is found at a higher priority test, testing should be halted and an examination of failing tests should occur.  A decision should be made whether or not to fix the issue and testi    ng can proceed based on this decision.
+  Some tests may be slower than others, so a high degree of concurrency in test execution is desired for fastest turnaround time.  Only the highest priority manual regression tests should be executed on changes.  Some may think this is an excessive process, but more often than not, developers are surprised at what tests discover and it is worth it even for smaller issues.  This applies to any commitable change that affects any system up until production.  
+
+● How are bugs/issues/CI-exceptions communicated to the relevant teams/engineers?
+Ideally, these are communicated fully automatically.  that being said, one cannot predict why a test fails when changes are committed.  QA should have a first hand at diagnosing test failures, whether they are test regressions (test should be changed to reflect new requirements), or actual failures (bugs).  I have worked at places where a dashboard has been implemented and alarms create sound for people to hear.  Even manual tests can send out an automatic alert when manual test plans are completed.  Once test failures are examined by the QA resource,  it should be communicated to engineers what the failure was, and what action needs to be done.This should be via the most efficient communication channel (in person) down to less efficient channels (slack,email,snail mail, message in a bottle etc)  This process does assume a "fix first" mentality otherwise tests will always be failing.  

@@ -1,0 +1,20 @@
+""" Laser Power Calculator page objects"""
+#this is a very very basic page object.  Making it more advanced would be a TODO
+class LaserCalculatorPage(object):
+    diameter_box = '#beamDiameter'
+    max_power_avg = "#enerpow1"
+    tophat = "input[value*='Tophat']"
+    gaussian = "input[value*='Gaussian']"
+    circular = "#beam1Circ"
+    rectangular = "#beam1Rect"
+    max_power_avg_box = "#max_pwr"
+    max_power_dropdown = "pwr_unit"
+    max_energy_box = "#max_nrg"
+    max_energy_dropdown = "#nrg_unit"
+    repetition_rate_box = "#repRate"
+    repetition_rate_dropdown = "#rep_unit"
+    pulse_width_box = "#pulse"
+    pulse_width_dropdown = "#pulse_unit"
+    calculate_button = "#btnCalculate"
+    peak_power_result = "#peakPowerRes"
+    peak_power_density_result = "#peakPowerDenRes"
