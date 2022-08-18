@@ -91,10 +91,12 @@ def test_request_sb_fixture(testdir):
 
 def check_outcome_field(outcomes, field_name, expected_value):
     field_value = outcomes.get(field_name, 0)
-    assert field_value == expected_value, (
-        "outcomes.%s has an unexpected value! "
-        'Expected "%s" but got "%s"!'
-        % (field_name, expected_value, field_value)
+    assert (
+        field_value == expected_value
+    ), "outcomes.%s has an unexpected value! " 'Expected "%s" but got "%s"!' % (
+        field_name,
+        expected_value,
+        field_value,
     )
 
 

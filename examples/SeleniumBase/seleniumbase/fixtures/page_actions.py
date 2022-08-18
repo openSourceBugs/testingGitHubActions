@@ -107,9 +107,7 @@ def is_text_visible(driver, text, selector, by=By.CSS_SELECTOR):
         return False
 
 
-def is_attribute_present(
-    driver, selector, attribute, value=None, by=By.CSS_SELECTOR
-):
+def is_attribute_present(driver, selector, attribute, value=None, by=By.CSS_SELECTOR):
     """
     Returns whether the specified attribute is present in the given selector.
     @Params
@@ -390,7 +388,7 @@ def wait_for_text_visible(
     selector,
     by=By.CSS_SELECTOR,
     timeout=settings.LARGE_TIMEOUT,
-    browser=None
+    browser=None,
 ):
     """
     Searches for the specified element by the given selector. Returns the
@@ -419,9 +417,8 @@ def wait_for_text_visible(
             element = driver.find_element(by=by, value=selector)
             is_present = True
             if browser == "safari":
-                if (
-                    element.is_displayed()
-                    and text in element.get_attribute("innerText")
+                if element.is_displayed() and text in element.get_attribute(
+                    "innerText"
                 ):
                     return element
                 else:
@@ -451,9 +448,11 @@ def wait_for_text_visible(
             )
             timeout_exception(NoSuchElementException, message)
         # The element exists in the HTML, but the text is not visible
-        message = (
-            "Expected text {%s} for {%s} was not visible after %s second%s!"
-            % (text, selector, timeout, plural)
+        message = "Expected text {%s} for {%s} was not visible after %s second%s!" % (
+            text,
+            selector,
+            timeout,
+            plural,
         )
         timeout_exception(ElementNotVisibleException, message)
 
@@ -464,7 +463,7 @@ def wait_for_exact_text_visible(
     selector,
     by=By.CSS_SELECTOR,
     timeout=settings.LARGE_TIMEOUT,
-    browser=None
+    browser=None,
 ):
     """
     Searches for the specified element by the given selector. Returns the
@@ -495,18 +494,14 @@ def wait_for_exact_text_visible(
             if browser == "safari":
                 if (
                     element.is_displayed()
-                    and text.strip() == element.get_attribute(
-                        "innerText").strip()
+                    and text.strip() == element.get_attribute("innerText").strip()
                 ):
                     return element
                 else:
                     element = None
                     raise Exception()
             else:
-                if (
-                    element.is_displayed()
-                    and text.strip() == element.text.strip()
-                ):
+                if element.is_displayed() and text.strip() == element.text.strip():
                     return element
                 else:
                     element = None
@@ -741,7 +736,7 @@ def wait_for_attribute_not_present(
     attribute,
     value=None,
     by=By.CSS_SELECTOR,
-    timeout=settings.LARGE_TIMEOUT
+    timeout=settings.LARGE_TIMEOUT,
 ):
     """
     Searches for the specified element attribute by the given selector.
@@ -760,9 +755,7 @@ def wait_for_attribute_not_present(
     stop_ms = start_ms + (timeout * 1000.0)
     for x in range(int(timeout * 10)):
         s_utils.check_if_time_limit_exceeded()
-        if not is_attribute_present(
-            driver, selector, attribute, value=value, by=by
-        ):
+        if not is_attribute_present(driver, selector, attribute, value=value, by=by):
             return True
         now_ms = time.time() * 1000.0
         if now_ms >= stop_ms:
@@ -807,9 +800,7 @@ def find_visible_elements(driver, selector, by=By.CSS_SELECTOR):
         return v_elems
 
 
-def save_screenshot(
-    driver, name, folder=None, selector=None, by=By.CSS_SELECTOR
-):
+def save_screenshot(driver, name, folder=None, selector=None, by=By.CSS_SELECTOR):
     """
     Saves a screenshot of the current page.
     If no folder is specified, uses the folder where pytest was called.
@@ -868,9 +859,7 @@ def save_page_source(driver, name, folder=None):
         html_file_path = name
     page_source = driver.page_source
     html_file = codecs.open(html_file_path, "w+", "utf-8")
-    rendered_source = log_helper.get_html_source_with_base_href(
-        driver, page_source
-    )
+    rendered_source = log_helper.get_html_source_with_base_href(driver, page_source)
     html_file.write(rendered_source)
     html_file.close()
 

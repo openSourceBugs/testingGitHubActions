@@ -922,20 +922,14 @@ def pytest_addoption(parser):
         )
 
     # Reuse-Session Mode does not support tests using forked subprocesses.
-    if "--forked" in sys_argv and (
-        "--rs" in sys_argv or "--reuse-session" in sys_argv
-    ):
+    if "--forked" in sys_argv and ("--rs" in sys_argv or "--reuse-session" in sys_argv):
         raise Exception(
             "\n\n  Reuse-Session Mode does NOT support forked subprocesses!"
             '\n  (DO NOT combine "--forked" with "--rs"/"--reuse-session"!)\n'
         )
 
     # Recorder Mode does not support multi-threaded / multi-process runs.
-    if (
-        "--recorder" in sys_argv
-        or "--record" in sys_argv
-        or "--rec" in sys_argv
-    ):
+    if "--recorder" in sys_argv or "--record" in sys_argv or "--rec" in sys_argv:
         arg_join = " ".join(sys.argv)
         if ("-n" in sys_argv) or (" -n=" in arg_join) or ("-c" in sys_argv):
             raise Exception(
@@ -946,12 +940,8 @@ def pytest_addoption(parser):
     # Recorder Mode does not support headless browser runs.
     # (Chromium does not allow extensions in Headless Mode)
     using_recorder = False
-    if (
-        "--recorder" in sys_argv
-        or "--record" in sys_argv
-        or "--rec" in sys_argv
-    ):
-        if ("--headless" in sys_argv):
+    if "--recorder" in sys_argv or "--record" in sys_argv or "--rec" in sys_argv:
+        if "--headless" in sys_argv:
             raise Exception(
                 "\n\n  Recorder Mode does NOT support Headless Mode!"
                 '\n  (DO NOT combine "--recorder" with "--headless"!)\n'
@@ -1043,12 +1033,13 @@ def pytest_addoption(parser):
     ):
         message = (
             "\n\n  Recorder Mode ONLY supports Chrome and Edge!"
-            '\n  (Your browser choice was: "%s")\n' % browser_list[0])
+            '\n  (Your browser choice was: "%s")\n' % browser_list[0]
+        )
         raise Exception(message)
 
 
 def pytest_configure(config):
-    """ This runs after command-line options have been parsed. """
+    """This runs after command-line options have been parsed."""
     sb_config.item_count = 0
     sb_config.item_count_passed = 0
     sb_config.item_count_failed = 0
@@ -1329,7 +1320,7 @@ def pytest_collection_finish(session):
 
 
 def pytest_runtest_setup(item):
-    """ This runs before every test with pytest. """
+    """This runs before every test with pytest."""
     if sb_config.dashboard:
         sb_config._sbase_detected = False
     test_id, display_id = _get_test_ids_(item)
@@ -1344,11 +1335,7 @@ def pytest_runtest_teardown(item):
     try:
         self = item._testcase
         try:
-            if (
-                hasattr(self, "driver")
-                and self.driver
-                and "--pdb" not in sys.argv
-            ):
+            if hasattr(self, "driver") and self.driver and "--pdb" not in sys.argv:
                 self.driver.quit()
         except Exception:
             pass
@@ -1409,9 +1396,7 @@ def _perform_pytest_unconfigure_():
                 pass
         sb_config.shared_driver = None
     if hasattr(sb_config, "log_path"):
-        log_helper.archive_logs_if_set(
-            sb_config.log_path, sb_config.archive_logs
-        )
+        log_helper.archive_logs_if_set(sb_config.log_path, sb_config.archive_logs)
     # Dashboard post-processing: Disable time-based refresh and stamp complete
     if not hasattr(sb_config, "dashboard") or not sb_config.dashboard:
         # Done with "pytest_unconfigure" unless using the Dashboard
@@ -1428,9 +1413,7 @@ def _perform_pytest_unconfigure_():
     find_it = constants.Dashboard.META_REFRESH_HTML
     swap_with = ""  # Stop refreshing the page after the run is done
     find_it_2 = "Awaiting results... (Refresh the page for updates)"
-    swap_with_2 = (
-        "Test Run ENDED: Some results UNREPORTED due to skipped tearDown()"
-    )
+    swap_with_2 = "Test Run ENDED: Some results UNREPORTED due to skipped tearDown()"
     find_it_3 = '<td class="col-result">Untested</td>'
     swap_with_3 = '<td class="col-result">Unreported</td>'
     find_it_4 = 'href="%s"' % constants.Dashboard.DASH_PIE_PNG_1
@@ -1461,9 +1444,7 @@ def _perform_pytest_unconfigure_():
             the_html_d = the_html_d.replace(find_it_3, swap_with_3)
             the_html_d = the_html_d.replace(find_it_4, swap_with_4)
             the_html_d += stamp
-            if sb_config._dash_is_html_report and (
-                sb_config._saved_dashboard_pie
-            ):
+            if sb_config._dash_is_html_report and (sb_config._saved_dashboard_pie):
                 the_html_d = the_html_d.replace(
                     "<h1>dashboard.html</h1>",
                     sb_config._saved_dashboard_pie,
@@ -1473,9 +1454,7 @@ def _perform_pytest_unconfigure_():
                     '</head><link rel="shortcut icon" '
                     'href="%s">' % constants.Dashboard.DASH_PIE_PNG_3,
                 )
-                the_html_d = the_html_d.replace(
-                    "<html>", '<html lang="en">'
-                )
+                the_html_d = the_html_d.replace("<html>", '<html lang="en">')
                 the_html_d = the_html_d.replace(
                     "<head>",
                     '<head><meta http-equiv="Content-Type" '
@@ -1496,9 +1475,7 @@ def _perform_pytest_unconfigure_():
             # Part 2: Appending a pytest html report with dashboard data
             html_report_path = None
             if sb_config._html_report_name:
-                html_report_path = os.path.join(
-                    abs_path, sb_config._html_report_name
-                )
+                html_report_path = os.path.join(abs_path, sb_config._html_report_name)
             if (
                 sb_config._using_html_report
                 and html_report_path
@@ -1535,15 +1512,12 @@ def _perform_pytest_unconfigure_():
 
 
 def pytest_unconfigure(config):
-    """ This runs after all tests have completed with pytest. """
+    """This runs after all tests have completed with pytest."""
     if hasattr(sb_config, "_multithreaded") and sb_config._multithreaded:
         import fasteners
 
         dash_lock = fasteners.InterProcessLock(constants.Dashboard.LOCKFILE)
-        if (
-            hasattr(sb_config, "dashboard")
-            and sb_config.dashboard
-        ):
+        if hasattr(sb_config, "dashboard") and sb_config.dashboard:
             # Multi-threaded tests with the Dashboard
             abs_path = os.path.abspath(".")
             dash_lock_file = constants.Dashboard.LOCKFILE
@@ -1626,11 +1600,7 @@ def pytest_runtest_makereport(item, call):
     report = outcome.get_result()
     if sb_config._multithreaded:
         sb_config._using_html_report = True  # For Dashboard use
-    if (
-        pytest_html
-        and report.when == "call"
-        and hasattr(sb_config, "dashboard")
-    ):
+    if pytest_html and report.when == "call" and hasattr(sb_config, "dashboard"):
         if sb_config.dashboard and not sb_config._sbase_detected:
             test_id, display_id = _get_test_ids_(item)
             r_outcome = report.outcome
@@ -1646,9 +1616,7 @@ def pytest_runtest_makereport(item, call):
             extra_report = None
             if hasattr(item, "_testcase"):
                 extra_report = item._testcase._html_report_extra
-            elif hasattr(item.instance, "sb") or (
-                item.nodeid in sb_config._sb_node
-            ):
+            elif hasattr(item.instance, "sb") or (item.nodeid in sb_config._sb_node):
                 if not hasattr(item.instance, "sb"):
                     sb_node = sb_config._sb_node[item.nodeid]
                 else:

@@ -70,7 +70,7 @@ class DBReporting(Plugin):
         self.testcase_manager.insert_execution_data(exec_payload)
 
     def startTest(self, test):
-        """ At the start of the test, set the testcase details. """
+        """At the start of the test, set the testcase details."""
         data_payload = TestcaseDataPayload()
         self.testcase_guid = str(uuid.uuid4())
         data_payload.guid = self.testcase_guid
@@ -95,9 +95,7 @@ class DBReporting(Plugin):
         """At the end of the test run, we want to
         update the DB row with the total execution time."""
         runtime = int(time.time() * 1000) - self.execution_start_time
-        self.testcase_manager.update_execution_data(
-            self.execution_guid, runtime
-        )
+        self.testcase_manager.update_execution_data(self.execution_guid, runtime)
 
     def afterTest(self, test):
         if not self._result_set:

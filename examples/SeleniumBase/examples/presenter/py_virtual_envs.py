@@ -119,8 +119,7 @@ class PythonVirtualEnvs(BaseCase):
             ),
         )
         self.add_slide(
-            "<p><b>List of commands from virtualenvwrapper</b></p>"
-            "<hr /><br />",
+            "<p><b>List of commands from virtualenvwrapper</b></p>" "<hr /><br />",
             code=(
                 "# Create a virtual environment:\n"
                 "mkvirtualenv ENV_NAME\n\n"

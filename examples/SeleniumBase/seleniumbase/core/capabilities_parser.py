@@ -51,9 +51,7 @@ def _analyze_manual(contents):
             continue
 
         # 'KEY' : "VALUE"
-        data = re.match(
-            r"""^\s*'([\S\s]+)'\s*:\s*"([\S\s]+)"\s*[,}]?\s*$""", line
-        )
+        data = re.match(r"""^\s*'([\S\s]+)'\s*:\s*"([\S\s]+)"\s*[,}]?\s*$""", line)
         if data:
             key = data.group(1)
             value = data.group(2)
@@ -61,9 +59,7 @@ def _analyze_manual(contents):
             continue
 
         # "KEY" : 'VALUE'
-        data = re.match(
-            r"""^\s*"([\S\s]+)"\s*:\s*'([\S\s]+)'\s*[,}]?\s*$""", line
-        )
+        data = re.match(r"""^\s*"([\S\s]+)"\s*:\s*'([\S\s]+)'\s*[,}]?\s*$""", line)
         if data:
             key = data.group(1)
             value = data.group(2)
@@ -119,9 +115,7 @@ def _analyze_manual(contents):
             continue
 
         # caps['KEY'] = "VALUE"
-        data = re.match(
-            r"""^\s*caps\['([\S\s]+)'\]\s*=\s*"([\S\s]+)"\s*$""", line
-        )
+        data = re.match(r"""^\s*caps\['([\S\s]+)'\]\s*=\s*"([\S\s]+)"\s*$""", line)
         if data:
             key = data.group(1)
             value = data.group(2)
@@ -129,9 +123,7 @@ def _analyze_manual(contents):
             continue
 
         # caps["KEY"] = 'VALUE'
-        data = re.match(
-            r"""^\s*caps\["([\S\s]+)"\]\s*=\s*'([\S\s]+)'\s*$""", line
-        )
+        data = re.match(r"""^\s*caps\["([\S\s]+)"\]\s*=\s*'([\S\s]+)'\s*$""", line)
         if data:
             key = data.group(1)
             value = data.group(2)

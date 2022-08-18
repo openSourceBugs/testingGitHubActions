@@ -598,8 +598,7 @@ def show_methods():
     c5 = colorama.Fore.LIGHTRED_EX + colorama.Back.LIGHTGREEN_EX
     cr = colorama.Style.RESET_ALL
     sc = (
-        "\n " + c2 + " ** " + c3 + " SeleniumBase Python Methods "
-        "" + c2 + " ** " + cr
+        "\n " + c2 + " ** " + c3 + " SeleniumBase Python Methods " "" + c2 + " ** " + cr
     )
     print(sc)
     print("")

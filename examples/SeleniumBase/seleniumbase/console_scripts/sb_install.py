@@ -196,7 +196,7 @@ def main(override=None):
                 use_version = url_request.text
                 if get_latest_minus_one:
                     get_v_latest = True
-                    use_version = str(int(use_version.split('.')[0]) - 1)
+                    use_version = str(int(use_version.split(".")[0]) - 1)
         if get_v_latest:
             url_req = requests_get(last)
             if url_req.ok:
@@ -208,9 +208,9 @@ def main(override=None):
                 use_version = url_request.text
                 if use_version == latest_version:
                     get_latest = True
-        download_url = (
-            "https://chromedriver.storage.googleapis.com/"
-            "%s/%s" % (use_version, file_name)
+        download_url = "https://chromedriver.storage.googleapis.com/" "%s/%s" % (
+            use_version,
+            file_name,
         )
         url_request = None
         if not found_chromedriver:
@@ -291,8 +291,7 @@ def main(override=None):
             print("\n*** %s = %s" % (msg, p_version))
         else:
             raise Exception(
-                "\nCould not find the specified geckodriver "
-                "version to download!\n"
+                "\nCould not find the specified geckodriver " "version to download!\n"
             )
     elif name == "edgedriver" or name == "msedgedriver":
         name = "edgedriver"
@@ -338,9 +337,7 @@ def main(override=None):
             file_name = "edgedriver_linux64.zip"
             suffix = "LINUX"
         else:
-            raise Exception(
-                "Cannot determine which version of EdgeDriver to download!"
-            )
+            raise Exception("Cannot determine which version of EdgeDriver to download!")
         if use_version.isdigit():
             edgedriver_st = "https://msedgedriver.azureedge.net/LATEST_RELEASE"
             use_version = "%s_%s_%s" % (edgedriver_st, use_version, suffix)
@@ -370,12 +367,11 @@ def main(override=None):
             file_name = "IEDriverServer_x64_%s.zip" % full_version
         else:
             raise Exception(
-                "Sorry! IEDriver is only for "
-                "Windows-based operating systems!"
+                "Sorry! IEDriver is only for " "Windows-based operating systems!"
             )
-        download_url = (
-            "https://selenium-release.storage.googleapis.com/"
-            "%s/%s" % (major_version, file_name)
+        download_url = "https://selenium-release.storage.googleapis.com/" "%s/%s" % (
+            major_version,
+            file_name,
         )
         headless_ie_version = "v1.4"
         headless_ie_file_name = "headless-selenium-for-win-v1-4.zip"
@@ -468,8 +464,7 @@ def main(override=None):
     if headless_ie_exists:
         headless_ie_file_path = downloads_folder + "/" + headless_ie_file_name
         print(
-            "\nDownloading %s from:\n%s ..."
-            % (headless_ie_file_name, headless_ie_url)
+            "\nDownloading %s from:\n%s ..." % (headless_ie_file_name, headless_ie_url)
         )
         remote_file = requests.get(headless_ie_url)
         with open(headless_ie_file_path, "wb") as file:
@@ -537,10 +532,7 @@ def main(override=None):
             # Only works if the directory is empty
             os.rmdir("%s/%s/" % (downloads_folder, h_ie_fn))
         driver_path = "%s/%s" % (downloads_folder, filename)
-        print(
-            "The file [%s] was saved to:\n%s%s%s\n"
-            % (filename, c3, driver_path, cr)
-        )
+        print("The file [%s] was saved to:\n%s%s%s\n" % (filename, c3, driver_path, cr))
         print("Making [%s %s] executable ..." % (driver_file, use_version))
         make_executable(driver_path)
         print("%s[%s] is now ready for use!%s" % (c1, driver_file, cr))
@@ -650,10 +642,7 @@ def main(override=None):
             if os.path.exists(downloads_folder + "/" + "Driver_Notes/"):
                 # Only works if the directory is empty
                 os.rmdir(downloads_folder + "/" + "Driver_Notes/")
-            print(
-                "The file [%s] was saved to:\n%s\n"
-                % (driver_file, driver_path)
-            )
+            print("The file [%s] was saved to:\n%s\n" % (driver_file, driver_path))
             print("Making [%s %s] executable ..." % (driver_file, use_version))
             make_executable(driver_path)
             print("%s[%s] is now ready for use!%s" % (c1, driver_file, cr))
@@ -684,10 +673,7 @@ def main(override=None):
             inner_sha = downloads_folder + "/" + inner_folder + "sha512_sum"
             shutil.copyfile(inner_driver, driver_path)
             pr_driver_path = c3 + driver_path + cr
-            print(
-                "The file [%s] was saved to:\n%s\n"
-                % (driver_file, pr_driver_path)
-            )
+            print("The file [%s] was saved to:\n%s\n" % (driver_file, pr_driver_path))
             print("Making [%s %s] executable ..." % (driver_file, use_version))
             make_executable(driver_path)
             print("%s[%s] is now ready for use!%s" % (c1, driver_file, cr))

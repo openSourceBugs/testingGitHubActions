@@ -108,23 +108,15 @@ def set_settings(settings_file):
         elif key == "DISABLE_CSP_ON_CHROME":
             settings.DISABLE_CSP_ON_CHROME = override_settings[key]
         elif key == "RAISE_INVALID_PROXY_STRING_EXCEPTION":
-            settings.RAISE_INVALID_PROXY_STRING_EXCEPTION = override_settings[
-                key
-            ]
+            settings.RAISE_INVALID_PROXY_STRING_EXCEPTION = override_settings[key]
         elif key == "MASTERQA_DEFAULT_VALIDATION_MESSAGE":
-            settings.MASTERQA_DEFAULT_VALIDATION_MESSAGE = override_settings[
-                key
-            ]
+            settings.MASTERQA_DEFAULT_VALIDATION_MESSAGE = override_settings[key]
         elif key == "MASTERQA_WAIT_TIME_BEFORE_VERIFY":
             settings.MASTERQA_WAIT_TIME_BEFORE_VERIFY = override_settings[key]
         elif key == "MASTERQA_START_IN_FULL_SCREEN_MODE":
-            settings.MASTERQA_START_IN_FULL_SCREEN_MODE = override_settings[
-                key
-            ]
+            settings.MASTERQA_START_IN_FULL_SCREEN_MODE = override_settings[key]
         elif key == "MASTERQA_MAX_IDLE_TIME_BEFORE_QUIT":
-            settings.MASTERQA_MAX_IDLE_TIME_BEFORE_QUIT = override_settings[
-                key
-            ]
+            settings.MASTERQA_MAX_IDLE_TIME_BEFORE_QUIT = override_settings[key]
         elif key == "TOTP_KEY":
             settings.TOTP_KEY = override_settings[key]
         elif key == "DB_HOST":

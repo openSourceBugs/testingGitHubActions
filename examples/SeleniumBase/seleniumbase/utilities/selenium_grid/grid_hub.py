@@ -11,9 +11,7 @@ if not os.environ["PATH"].startswith(DRIVER_DIR):
     # Remove existing SeleniumBase DRIVER_DIR from System PATH if present
     os.environ["PATH"] = os.environ["PATH"].replace(DRIVER_DIR, "")
     # If two path separators are next to each other, replace with just one
-    os.environ["PATH"] = os.environ["PATH"].replace(
-        os.pathsep + os.pathsep, os.pathsep
-    )
+    os.environ["PATH"] = os.environ["PATH"].replace(os.pathsep + os.pathsep, os.pathsep)
     # Put the SeleniumBase DRIVER_DIR at the beginning of the System PATH
     os.environ["PATH"] = DRIVER_DIR + os.pathsep + os.environ["PATH"]
 
@@ -87,14 +85,10 @@ def main():
 
     if "linux" in sys.platform or "darwin" in sys.platform:
         if grid_hub_command == "start":
-            subprocess.check_call(
-                dir_path + "/grid-hub start %s" % timeout, shell=True
-            )
+            subprocess.check_call(dir_path + "/grid-hub start %s" % timeout, shell=True)
         elif grid_hub_command == "restart":
             subprocess.check_call(dir_path + "/grid-hub stop .", shell=True)
-            subprocess.check_call(
-                dir_path + "/grid-hub start %s" % timeout, shell=True
-            )
+            subprocess.check_call(dir_path + "/grid-hub start %s" % timeout, shell=True)
         elif grid_hub_command == "stop":
             subprocess.check_call(dir_path + "/grid-hub stop .", shell=True)
         else:

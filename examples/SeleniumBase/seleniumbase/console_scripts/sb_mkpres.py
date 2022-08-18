@@ -289,8 +289,7 @@ def main():
     else:
         os.system("sbase print '%s' -n" % file_name)
     success = (
-        "\n" + c1 + '* Presentation: "' + file_name + '" was created! *'
-        "" + cr + "\n"
+        "\n" + c1 + '* Presentation: "' + file_name + '" was created! *' "" + cr + "\n"
     )
     print(success)
 

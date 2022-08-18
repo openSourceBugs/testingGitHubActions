@@ -16,14 +16,10 @@ def str_xor(string, key):
         key = key + (((difference / len(key)) * key) + key)
     result = None
     try:
-        result = "".join(
-            [chr(ord(c1) ^ ord(c2)) for (c1, c2) in zip(string, key)]
-        )
+        result = "".join([chr(ord(c1) ^ ord(c2)) for (c1, c2) in zip(string, key)])
     except Exception:
         string = string.decode("utf-8")
-        result = "".join(
-            [chr(ord(c1) ^ ord(c2)) for (c1, c2) in zip(string, key)]
-        )
+        result = "".join([chr(ord(c1) ^ ord(c2)) for (c1, c2) in zip(string, key)])
     return result
 
 

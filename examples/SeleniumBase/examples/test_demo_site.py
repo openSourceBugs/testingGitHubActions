@@ -22,8 +22,7 @@ class DemoSiteTests(BaseCase):
         # Verify that a hover dropdown link changes page text
         self.assert_text("Automation Practice", "h3")
         try:
-            self.hover_and_click(
-                "#myDropdown", "#dropOption2", timeout=2)
+            self.hover_and_click("#myDropdown", "#dropOption2", timeout=2)
         except Exception:
             # If a human moves the mouse while the test runs
             self.js_click("#dropOption2")

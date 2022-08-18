@@ -69,9 +69,7 @@ class DownloadTests(BaseCase):
         tar_gz_display_kb = float(tar_gz_line.split("(")[1].split(" ")[0])
 
         # Verify downloaded files are the correct size (account for rounding)
-        self.assert_true(
-            abs(math.floor(whl_file_kb) - math.floor(whl_display_kb)) < 2
-        )
+        self.assert_true(abs(math.floor(whl_file_kb) - math.floor(whl_display_kb)) < 2)
         self.assert_true(
             abs(math.floor(tar_gz_file_kb) - math.floor(tar_gz_display_kb)) < 2
         )

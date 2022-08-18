@@ -7,7 +7,7 @@ import subprocess
 import sys
 
 
-class TestUpgradeChromedriver():
+class TestUpgradeChromedriver:
     def basic_run(self, testdir):
         testdir.makepyfile(
             """
@@ -90,9 +90,7 @@ class TestUpgradeChromedriver():
             assert result.matchreport("test_passing").passed
         except Exception:
             # Install the compatibility version of chromedriver
-            subprocess.check_call(
-                "seleniumbase install chromedriver 2.44", shell=True
-            )
+            subprocess.check_call("seleniumbase install chromedriver 2.44", shell=True)
         # Upgrade chromedriver to match the installed version of Chrome
         testdir = self.upgrade_chromedriver(testdir)
         result = testdir.inline_run("--headless", "-s")

@@ -125,6 +125,4 @@ class MyPresenterClass(BaseCase):
             "<h2><b>The End</b></h2>",
             image="https://seleniumbase.io/img/sb_logo_10.png",
         )
-        self.begin_presentation(
-            filename="presenter.html", show_notes=True, interval=0
-        )
+        self.begin_presentation(filename="presenter.html", show_notes=True, interval=0)

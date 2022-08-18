@@ -12,9 +12,7 @@ class ConvertibleToCssTranslator(GenericTranslator):
     """
 
     def css_to_xpath(self, css, prefix="//"):
-        return super(ConvertibleToCssTranslator, self).css_to_xpath(
-            css, prefix
-        )
+        return super(ConvertibleToCssTranslator, self).css_to_xpath(css, prefix)
 
     def xpath_attrib_equals(self, xpath, name, value):
         xpath.add_condition("%s=%s" % (name, self.xpath_literal(value)))
@@ -24,9 +22,7 @@ class ConvertibleToCssTranslator(GenericTranslator):
         from cssselect.xpath import is_non_whitespace
 
         if is_non_whitespace(value):
-            xpath.add_condition(
-                "contains(%s, %s)" % (name, self.xpath_literal(value))
-            )
+            xpath.add_condition("contains(%s, %s)" % (name, self.xpath_literal(value)))
         else:
             xpath.add_condition("0")
         return xpath
@@ -34,18 +30,14 @@ class ConvertibleToCssTranslator(GenericTranslator):
     def xpath_attrib_substringmatch(self, xpath, name, value):
         if value:
             # Attribute selectors are case sensitive
-            xpath.add_condition(
-                "contains(%s, %s)" % (name, self.xpath_literal(value))
-            )
+            xpath.add_condition("contains(%s, %s)" % (name, self.xpath_literal(value)))
         else:
             xpath.add_condition("0")
         return xpath
 
     def xpath_class(self, class_selector):
         xpath = self.xpath(class_selector.selector)
-        return self.xpath_attrib_includes(
-            xpath, "@class", class_selector.class_name
-        )
+        return self.xpath_attrib_includes(xpath, "@class", class_selector.class_name)
 
     def xpath_descendant_combinator(self, left, right):
         """right is a child, grand-child or further descendant of left"""

@@ -58,8 +58,7 @@ class ShadowDomTests(BaseCase):
             " downloads-item::shadow #file-link"
         )
         remove_button = (
-            "downloads-manager::shadow #downloadsList"
-            " downloads-item::shadow #remove"
+            "downloads-manager::shadow #downloadsList" " downloads-item::shadow #remove"
         )
         no_downloads_area = "downloads-manager::shadow #no-downloads"
 

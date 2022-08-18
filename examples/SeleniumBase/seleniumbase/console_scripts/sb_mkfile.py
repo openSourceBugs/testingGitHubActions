@@ -231,17 +231,14 @@ def main():
     if not recorder:
         data.append('        self.open("%s")' % url)
     else:
-        data.append('        if self.recorder_ext and not self.xvfb:')
-        data.append('            import ipdb; ipdb.set_trace()')
+        data.append("        if self.recorder_ext and not self.xvfb:")
+        data.append("            import ipdb; ipdb.set_trace()")
     if not basic and not recorder:
-        data.append(
-            '        self.type("input", "%s")' "  # selector, text" % goodbye
-        )
+        data.append('        self.type("input", "%s")' "  # selector, text" % goodbye)
         data.append('        self.click("%s")  # selector' % para1)
         data.append('        self.assert_element("%s")  # selector' % body)
         data.append(
-            '        self.assert_text("%s", "%s")'
-            "  # text, selector" % (hello, para2)
+            '        self.assert_text("%s", "%s")' "  # text, selector" % (hello, para2)
         )
     data.append("")
 
@@ -290,8 +287,7 @@ def main():
     else:
         os.system("sbase print '%s' -n" % file_name)
     success = (
-        "\n" + c1 + '* Test file: "' + file_name + '" was created! *'
-        "" + cr + "\n"
+        "\n" + c1 + '* Test file: "' + file_name + '" was created! *' "" + cr + "\n"
     )
     print(success)
 

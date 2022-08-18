@@ -296,9 +296,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.js_click"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.js_click""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -349,9 +347,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.slow_click"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.slow_click""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -402,9 +398,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.double_click"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.double_click""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -508,9 +502,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.highlight"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.highlight""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -561,9 +553,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.highlight_click"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.highlight_click""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -826,9 +816,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.switch_to_frame"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.switch_to_frame""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -932,9 +920,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.assert_element"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.assert_element""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -1042,9 +1028,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.find_element"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.find_element""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -1095,9 +1079,7 @@ def process_test_file(
             )
         else:
             data = re.match(
-                r"""^(\s*)self\.get_element"""
-                r"""\(([\S]+)\)([\S\s]*)"""
-                r"""$""",
+                r"""^(\s*)self\.get_element""" r"""\(([\S]+)\)([\S\s]*)""" r"""$""",
                 line,
             )
         if data:
@@ -2879,8 +2861,7 @@ def main(shell_command):
 
     add_comments = False
     if shell_command == "objectify" or (
-        shell_command == "inject-objects"
-        or (shell_command == "revert-objects")
+        shell_command == "inject-objects" or (shell_command == "revert-objects")
     ):
         if len(command_args) >= 2:
             options = command_args[1:]

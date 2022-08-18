@@ -199,9 +199,7 @@ class Base(Plugin):
         self.start_time = float(time.time())
 
     def finalize(self, result):
-        log_helper.archive_logs_if_set(
-            self.options.log_path, self.options.archive_logs
-        )
+        log_helper.archive_logs_if_set(self.options.log_path, self.options.archive_logs)
         if self.report_on:
             if not self.import_error:
                 report_helper.add_bad_page_log_file(self.page_results_list)
@@ -240,9 +238,7 @@ class Base(Plugin):
             )
             self.successes.append(test.id())
             self.page_results_list.append(
-                report_helper.process_successes(
-                    test, self.test_count, self.duration
-                )
+                report_helper.process_successes(test, self.test_count, self.duration)
             )
 
     def add_fails_or_errors(self, test):
@@ -258,9 +254,7 @@ class Base(Plugin):
             self.failures.append(test.id())
             br = self.options.browser
             self.page_results_list.append(
-                report_helper.process_failures(
-                    test, self.test_count, br, self.duration
-                )
+                report_helper.process_failures(test, self.test_count, br, self.duration)
             )
 
     def addFailure(self, test, err, capt=None, tbinfo=None):

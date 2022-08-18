@@ -11,9 +11,7 @@ if not os.environ["PATH"].startswith(DRIVER_DIR):
     # Remove existing SeleniumBase DRIVER_DIR from System PATH if present
     os.environ["PATH"] = os.environ["PATH"].replace(DRIVER_DIR, "")
     # If two path separators are next to each other, replace with just one
-    os.environ["PATH"] = os.environ["PATH"].replace(
-        os.pathsep + os.pathsep, os.pathsep
-    )
+    os.environ["PATH"] = os.environ["PATH"].replace(os.pathsep + os.pathsep, os.pathsep)
     # Put the SeleniumBase DRIVER_DIR at the beginning of the System PATH
     os.environ["PATH"] = DRIVER_DIR + os.pathsep + os.environ["PATH"]
 
@@ -75,9 +73,7 @@ def main():
     if num_args >= 4:
         options = sys.argv[3:]
         for option in options:
-            if option.startswith("--hub=") and (
-                len(option.split("--hub=")[1]) > 0
-            ):
+            if option.startswith("--hub=") and (len(option.split("--hub=")[1]) > 0):
                 server_ip = option.split("--hub=")[1]
             elif option == "-v" or option == "--verbose":
                 verbose = "True"

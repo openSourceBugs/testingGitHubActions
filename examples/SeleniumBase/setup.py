@@ -264,7 +264,7 @@ setup(
             'flake8==3.7.9;python_version<"3.5"',
             'flake8==3.9.2;python_version>="3.5" and python_version<"3.6"',
             'flake8==4.0.1;python_version>="3.6"',
-            'mccabe==0.6.1',
+            "mccabe==0.6.1",
             'pyflakes==2.1.1;python_version<"3.5"',
             'pyflakes==2.3.1;python_version>="3.5" and python_version<"3.6"',
             'pyflakes==2.4.0;python_version>="3.6"',
@@ -303,10 +303,7 @@ setup(
             "page_source = seleniumbase.plugins.page_source:PageSource",
             "screen_shots = seleniumbase.plugins.screen_shots:ScreenShots",
             "test_info = seleniumbase.plugins.basic_test_info:BasicTestInfo",
-            (
-                "db_reporting = "
-                "seleniumbase.plugins.db_reporting_plugin:DBReporting"
-            ),
+            ("db_reporting = " "seleniumbase.plugins.db_reporting_plugin:DBReporting"),
             "s3_logging = seleniumbase.plugins.s3_logging_plugin:S3Logging",
         ],
         "pytest11": ["seleniumbase = seleniumbase.plugins.pytest_plugin"],

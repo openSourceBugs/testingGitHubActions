@@ -7,9 +7,7 @@ class AppleTests(BaseCase):
         self.demo_mode = True
         self.demo_sleep = 0.5
         self.message_duration = 2.0
-        if self.headless and (
-            self.browser == "chrome" or self.browser == "edge"
-        ):
+        if self.headless and (self.browser == "chrome" or self.browser == "edge"):
             self.get_new_driver(
                 agent="""Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) """
                 """AppleWebKit/537.36 (KHTML, like Gecko) """
@@ -19,7 +17,7 @@ class AppleTests(BaseCase):
         title = "Testing with WebDriver in Safari"
         self.type('[placeholder*="developer.apple.com"]', title + "\n")
         self.click("link=%s" % title)
-        self.assert_element('nav.documentation-nav')
+        self.assert_element("nav.documentation-nav")
         self.assert_text(title, "h1")
         self.highlight("div.description div.abstract")
         self.highlight("h2")

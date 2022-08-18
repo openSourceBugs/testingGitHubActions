@@ -27,18 +27,10 @@ class MasterQA(BaseCase):
         self.RESULTS_PAGE = settings.HTML_REPORT
         self.BAD_PAGE_LOG = settings.RESULTS_TABLE
         self.DEFAULT_VALIDATION_TITLE = "Manual Check"
-        self.DEFAULT_VALIDATION_MESSAGE = (
-            settings.MASTERQA_DEFAULT_VALIDATION_MESSAGE
-        )
-        self.WAIT_TIME_BEFORE_VERIFY = (
-            settings.MASTERQA_WAIT_TIME_BEFORE_VERIFY
-        )
-        self.START_IN_FULL_SCREEN_MODE = (
-            settings.MASTERQA_START_IN_FULL_SCREEN_MODE
-        )
-        self.MAX_IDLE_TIME_BEFORE_QUIT = (
-            settings.MASTERQA_MAX_IDLE_TIME_BEFORE_QUIT
-        )
+        self.DEFAULT_VALIDATION_MESSAGE = settings.MASTERQA_DEFAULT_VALIDATION_MESSAGE
+        self.WAIT_TIME_BEFORE_VERIFY = settings.MASTERQA_WAIT_TIME_BEFORE_VERIFY
+        self.START_IN_FULL_SCREEN_MODE = settings.MASTERQA_START_IN_FULL_SCREEN_MODE
+        self.MAX_IDLE_TIME_BEFORE_QUIT = settings.MASTERQA_MAX_IDLE_TIME_BEFORE_QUIT
         self.__manual_check_setup()
         if self.headless:
             self.auto_close_results_page = True
@@ -65,8 +57,7 @@ class MasterQA(BaseCase):
     def tearDown(self):
         if self.headless and self.check_count > 0:
             print(
-                "WARNING: %s manual checks were skipped! (MasterQA)"
-                % self.check_count
+                "WARNING: %s manual checks were skipped! (MasterQA)" % self.check_count
             )
         if self.__has_exception():
             self.__add_failure(sys.exc_info()[1])
@@ -85,9 +76,7 @@ class MasterQA(BaseCase):
         self.page_results_list = []
         self.__clear_out_old_logs(archive_past_runs=False)
 
-    def __clear_out_old_logs(
-        self, archive_past_runs=True, get_log_folder=False
-    ):
+    def __clear_out_old_logs(self, archive_past_runs=True, get_log_folder=False):
         abs_path = os.path.abspath(".")
         file_path = abs_path + "/%s" % self.LATEST_REPORT_DIR
         if not os.path.exists(file_path):
@@ -209,9 +198,7 @@ class MasterQA(BaseCase):
             waiting_for_response = True
             while waiting_for_response:
                 time.sleep(0.05)
-                jqc_open = self.execute_script(
-                    "return jconfirm.instances.length"
-                )
+                jqc_open = self.execute_script("return jconfirm.instances.length")
                 if str(jqc_open) == "0":
                     break
             time.sleep(0.1)
@@ -305,9 +292,7 @@ class MasterQA(BaseCase):
             except NoAlertPresentException:
                 return
         self.driver.quit()
-        raise Exception(
-            "%s seconds passed without human action! Stopping..." % timeout
-        )
+        raise Exception("%s seconds passed without human action! Stopping..." % timeout)
 
     def __has_exception(self):
         has_exception = False
@@ -498,9 +483,7 @@ class MasterQA(BaseCase):
         archived_results_file = log_path + "/" + self.RESULTS_PAGE
         shutil.copyfile(results_file, archived_results_file)
         if self.manual_check_count > 0:
-            print(
-                "\n*** The manual test report is located at:\n" + results_file
-            )
+            print("\n*** The manual test report is located at:\n" + results_file)
         self.open("file://%s" % archived_results_file)
         if auto_close_results_page:
             # Long enough to notice the results before closing the page

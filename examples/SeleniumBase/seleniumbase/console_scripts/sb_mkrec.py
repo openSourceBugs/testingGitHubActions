@@ -114,15 +114,12 @@ def main():
                 help_me = True
             elif option.lower() == "--edge":
                 use_edge = True
-            elif (
-                option.lower() in ("--gui", "--headed")
-                and "linux" in sys.platform
-            ):
+            elif option.lower() in ("--gui", "--headed") and "linux" in sys.platform:
                 use_colors = True
                 c0, c1, c2, c5, c7, cr = set_colors(use_colors)
                 force_gui = True
             elif option.lower().startswith("--url="):
-                start_page = option[len("--url="):]
+                start_page = option[len("--url=") :]
             elif option.lower() == "--url":
                 next_is_url = True
             elif next_is_url:
@@ -148,14 +145,14 @@ def main():
     data.append("")
     data.append("class RecorderTests(BaseCase):")
     data.append("    def test_recording(self):")
-    data.append('        if self.recorder_ext and not self.xvfb:')
-    data.append('            import ipdb; ipdb.set_trace()')
+    data.append("        if self.recorder_ext and not self.xvfb:")
+    data.append("            import ipdb; ipdb.set_trace()")
     data.append("")
     file = codecs.open(file_path, "w+", "utf-8")
     file.writelines("\r\n".join(data))
     file.close()
     success = (
-        "\n" + c0 + '* RECORDING initialized:' + cr + " "
+        "\n" + c0 + "* RECORDING initialized:" + cr + " "
         "" + c1 + file_name + "" + cr + "\n"
     )
     print(success)

@@ -92,9 +92,7 @@ class Warnings:
 
 class JQuery:
     VER = "3.6.0"
-    MIN_JS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/jquery/%s/jquery.min.js" % VER
-    )
+    MIN_JS = "https://cdnjs.cloudflare.com/ajax/libs/jquery/%s/jquery.min.js" % VER
     # MIN_JS = (
     #    "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-%s.min.js" % VER)
     # MIN_JS = (
@@ -156,8 +154,7 @@ class Underscore:
 class Backbone:
     VER = "1.4.0"
     MIN_JS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/"
-        "backbone.js/%s/backbone-min.js" % VER
+        "https://cdnjs.cloudflare.com/ajax/libs/" "backbone.js/%s/backbone-min.js" % VER
     )
 
 
@@ -227,8 +224,7 @@ class Reveal:
         "reveal.js/%s/css/theme/solarized.min.css" % VER
     )
     MIN_JS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/"
-        "reveal.js/%s/js/reveal.min.js" % VER
+        "https://cdnjs.cloudflare.com/ajax/libs/" "reveal.js/%s/js/reveal.min.js" % VER
     )
 
 
@@ -237,12 +233,8 @@ class HighCharts:
     HC_CSS = "https://code.highcharts.com/%s/css/highcharts.css" % VER
     HC_JS = "https://code.highcharts.com/%s/highcharts.js" % VER
     EXPORTING_JS = "https://code.highcharts.com/%s/modules/exporting.js" % VER
-    EXPORT_DATA_JS = (
-        "https://code.highcharts.com/%s/modules/export-data.js" % VER
-    )
-    ACCESSIBILITY_JS = (
-        "https://code.highcharts.com/%s/modules/accessibility.js" % VER
-    )
+    EXPORT_DATA_JS = "https://code.highcharts.com/%s/modules/export-data.js" % VER
+    ACCESSIBILITY_JS = "https://code.highcharts.com/%s/modules/accessibility.js" % VER
 
 
 class BootstrapTour:
@@ -260,12 +252,10 @@ class BootstrapTour:
 class DriverJS:
     VER = "0.9.8"
     MIN_CSS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/"
-        "driver.js/%s/driver.min.css" % VER
+        "https://cdnjs.cloudflare.com/ajax/libs/" "driver.js/%s/driver.min.css" % VER
     )
     MIN_JS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/"
-        "driver.js/%s/driver.min.js" % VER
+        "https://cdnjs.cloudflare.com/ajax/libs/" "driver.js/%s/driver.min.js" % VER
     )
 
 
@@ -289,6 +279,7 @@ class IntroJS:
 
 class TourColor:
     """Used for button colors in IntroJS Tours"""
+
     # theme_color = "#f26721"  # Orange
     # hover_color = "#db5409"  # Darker Orange
     theme_color = "#367be5"  # Blue
@@ -313,8 +304,7 @@ class JqueryConfirm:
 class Shepherd:
     VER = "1.8.1"
     MIN_JS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/"
-        "shepherd/%s/js/shepherd.min.js" % VER
+        "https://cdnjs.cloudflare.com/ajax/libs/" "shepherd/%s/js/shepherd.min.js" % VER
     )
     THEME_ARROWS_CSS = (
         "https://cdnjs.cloudflare.com/ajax/libs/"
@@ -345,8 +335,7 @@ class Shepherd:
 class Tether:
     VER = "1.4.7"
     MIN_JS = (
-        "https://cdnjs.cloudflare.com/ajax/libs/"
-        "tether/%s/js/tether.min.js" % VER
+        "https://cdnjs.cloudflare.com/ajax/libs/" "tether/%s/js/tether.min.js" % VER
     )
 
 

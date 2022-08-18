@@ -32,11 +32,11 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install --upgrade wheel
         pip install -r requirements.txt
-    - name: Lint with flake8
+    - name: Lint with black
       run: |
-        pip install flake8
+        pip install black
         # Stop the build if there are flake8 issues
-        flake8 . --count --show-source --statistics --exclude=temp
+        black . --check
     - name: Install Chrome and Firefox
       run: |
         sudo apt install google-chrome-stable

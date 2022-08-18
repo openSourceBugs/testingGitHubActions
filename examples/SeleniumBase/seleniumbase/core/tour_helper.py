@@ -261,7 +261,7 @@ def is_shepherd_activated(driver):
 
 
 def play_shepherd_tour(driver, tour_steps, msg_dur, name=None, interval=0):
-    """ Plays a Shepherd tour on the current website. """
+    """Plays a Shepherd tour on the current website."""
     instructions = ""
     for tour_step in tour_steps[name]:
         instructions += tour_step
@@ -326,8 +326,7 @@ def play_shepherd_tour(driver, tour_steps, msg_dur, name=None, interval=0):
                         ".options.attachTo.element"
                     )
                     shep_text = driver.execute_script(
-                        "return Shepherd.activeTour.currentStep"
-                        ".options.text"
+                        "return Shepherd.activeTour.currentStep" ".options.text"
                     )
                 except Exception:
                     continue
@@ -338,9 +337,7 @@ def play_shepherd_tour(driver, tour_steps, msg_dur, name=None, interval=0):
                     stop_ms = start_ms + (interval * 1000.0)
                 now_ms = time.time() * 1000.0
                 if now_ms >= stop_ms:
-                    if (element == latest_element) and (
-                        shep_text == latest_text
-                    ):
+                    if (element == latest_element) and (shep_text == latest_text):
                         driver.execute_script("Shepherd.activeTour.next()")
                         try:
                             latest_element = driver.execute_script(
@@ -348,8 +345,7 @@ def play_shepherd_tour(driver, tour_steps, msg_dur, name=None, interval=0):
                                 ".options.attachTo.element"
                             )
                             latest_text = driver.execute_script(
-                                "return Shepherd.activeTour.currentStep"
-                                ".options.text"
+                                "return Shepherd.activeTour.currentStep" ".options.text"
                             )
                             start_ms = time.time() * 1000.0
                             stop_ms = start_ms + (interval * 1000.0)
@@ -360,17 +356,14 @@ def play_shepherd_tour(driver, tour_steps, msg_dur, name=None, interval=0):
             try:
                 time.sleep(0.01)
                 selector = driver.execute_script(
-                    "return Shepherd.activeTour"
-                    ".currentStep.options.attachTo.element"
+                    "return Shepherd.activeTour" ".currentStep.options.attachTo.element"
                 )
                 try:
                     js_utils.wait_for_css_query_selector(
                         driver, selector, timeout=settings.SMALL_TIMEOUT
                     )
                 except Exception:
-                    remove_script = (
-                        "jQuery('%s').remove()" % "div.shepherd-content"
-                    )
+                    remove_script = "jQuery('%s').remove()" % "div.shepherd-content"
                     driver.execute_script(remove_script)
                     js_utils.post_messenger_error_message(
                         driver,
@@ -388,10 +381,8 @@ def play_shepherd_tour(driver, tour_steps, msg_dur, name=None, interval=0):
                 time.sleep(0.1)
 
 
-def play_bootstrap_tour(
-    driver, tour_steps, browser, msg_dur, name=None, interval=0
-):
-    """ Plays a Bootstrap tour on the current website. """
+def play_bootstrap_tour(driver, tour_steps, browser, msg_dur, name=None, interval=0):
+    """Plays a Bootstrap tour on the current website."""
     instructions = ""
     for tour_step in tour_steps[name]:
         instructions += tour_step
@@ -409,9 +400,7 @@ def play_bootstrap_tour(
         if interval < 1:
             interval = 1
         interval = str(float(interval) * 1000.0)
-        instructions = instructions.replace(
-            "duration: 0,", "duration: %s," % interval
-        )
+        instructions = instructions.replace("duration: 0,", "duration: %s," % interval)
 
     if not is_bootstrap_activated(driver):
         activate_bootstrap(driver)
@@ -480,10 +469,8 @@ def play_bootstrap_tour(
                 time.sleep(0.1)
 
 
-def play_driverjs_tour(
-    driver, tour_steps, browser, msg_dur, name=None, interval=0
-):
-    """ Plays a DriverJS tour on the current website. """
+def play_driverjs_tour(driver, tour_steps, browser, msg_dur, name=None, interval=0):
+    """Plays a DriverJS tour on the current website."""
     instructions = ""
     for tour_step in tour_steps[name]:
         instructions += tour_step
@@ -529,9 +516,7 @@ def play_driverjs_tour(
             )
 
     driver.execute_script(instructions)
-    driver.execute_script(
-        'document.querySelector(".driver-next-btn").focus();'
-    )
+    driver.execute_script('document.querySelector(".driver-next-btn").focus();')
     tour_on = True
     if autoplay:
         start_ms = time.time() * 1000.0
@@ -555,14 +540,10 @@ def play_driverjs_tour(
             result = None
         if result is False:
             tour_on = True
-            driver.execute_script(
-                'document.querySelector(".driver-next-btn").focus();'
-            )
+            driver.execute_script('document.querySelector(".driver-next-btn").focus();')
             if autoplay:
                 try:
-                    current_step = driver.execute_script(
-                        "return $tour.currentStep"
-                    )
+                    current_step = driver.execute_script("return $tour.currentStep")
                 except Exception:
                     continue
                 if current_step != latest_step:
@@ -586,9 +567,7 @@ def play_driverjs_tour(
             try:
                 time.sleep(0.01)
                 if browser != "firefox":
-                    result = not driver.execute_script(
-                        "return $tour.isActivated"
-                    )
+                    result = not driver.execute_script("return $tour.isActivated")
                 else:
                     page_actions.wait_for_element_visible(
                         driver,
@@ -607,10 +586,8 @@ def play_driverjs_tour(
                 time.sleep(0.1)
 
 
-def play_hopscotch_tour(
-    driver, tour_steps, browser, msg_dur, name=None, interval=0
-):
-    """ Plays a Hopscotch tour on the current website. """
+def play_hopscotch_tour(driver, tour_steps, browser, msg_dur, name=None, interval=0):
+    """Plays a Hopscotch tour on the current website."""
     instructions = ""
     for tour_step in tour_steps[name]:
         instructions += tour_step
@@ -726,10 +703,8 @@ def play_hopscotch_tour(
                 time.sleep(0.1)
 
 
-def play_introjs_tour(
-    driver, tour_steps, browser, msg_dur, name=None, interval=0
-):
-    """ Plays an IntroJS tour on the current website. """
+def play_introjs_tour(driver, tour_steps, browser, msg_dur, name=None, interval=0):
+    """Plays an IntroJS tour on the current website."""
     instructions = ""
     for tour_step in tour_steps[name]:
         instructions += tour_step
@@ -809,9 +784,7 @@ def play_introjs_tour(
             tour_on = True
             if autoplay:
                 try:
-                    current_step = driver.execute_script(
-                        "return $tour._currentStep"
-                    )
+                    current_step = driver.execute_script("return $tour._currentStep")
                 except Exception:
                     continue
                 if current_step != latest_step:

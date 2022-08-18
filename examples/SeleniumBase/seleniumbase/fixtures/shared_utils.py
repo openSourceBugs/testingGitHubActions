@@ -81,9 +81,9 @@ def check_if_time_limit_exceeded():
                 display_time_limit = int(time_limit)
                 if display_time_limit == 1:
                     plural = ""
-            message = (
-                "This test has exceeded the time limit of %s second%s!"
-                % (display_time_limit, plural)
+            message = "This test has exceeded the time limit of %s second%s!" % (
+                display_time_limit,
+                plural,
             )
             message = _format_message(message)
             __time_limit_exceeded(message)

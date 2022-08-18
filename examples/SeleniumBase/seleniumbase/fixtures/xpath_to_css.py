@@ -44,12 +44,8 @@ def _handle_brackets_in_strings(xpath):
     len_chunks = len(chunks)
     for chunk_num in range(len_chunks):
         if chunk_num % 2 != 0:
-            chunks[chunk_num] = chunks[chunk_num].replace(
-                "[", "_STR_L_bracket_"
-            )
-            chunks[chunk_num] = chunks[chunk_num].replace(
-                "]", "_STR_R_bracket_"
-            )
+            chunks[chunk_num] = chunks[chunk_num].replace("[", "_STR_L_bracket_")
+            chunks[chunk_num] = chunks[chunk_num].replace("]", "_STR_R_bracket_")
         new_xpath += chunks[chunk_num]
         if chunk_num != len_chunks - 1:
             new_xpath += '"'
@@ -178,8 +174,7 @@ def convert_xpath_to_css(xpath):
 
     # Find instance of: //tag[@attribute1='value1' and (@attribute2='value2')]
     data = re.match(
-        r"""^\s*//(\S+)\[@(\S+)='(\S+)'\s+and\s+"""
-        r"""\(@(\S+)='(\S+)'\)\]""",
+        r"""^\s*//(\S+)\[@(\S+)='(\S+)'\s+and\s+""" r"""\(@(\S+)='(\S+)'\)\]""",
         xpath,
     )
     if data:
@@ -222,9 +217,7 @@ def convert_xpath_to_css(xpath):
         for xpath_section in xpath_sections:
             if not xpath_section.startswith("//"):
                 xpath_section = "//" + xpath_section
-            css_sections.append(_get_raw_css_from_xpath(
-                xpath_section, original)
-            )
+            css_sections.append(_get_raw_css_from_xpath(xpath_section, original))
         css = "/descORself/".join(css_sections)
     else:
         css = _get_raw_css_from_xpath(xpath, original)

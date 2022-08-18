@@ -142,24 +142,16 @@ class MD_F:
         # - The Default Import Line:
         import_line["English"] = "from seleniumbase import BaseCase"
         # - Translated Import Lines:
-        import_line[
-            "Chinese"
-        ] = "from seleniumbase.translate.chinese import 硒测试用例"
-        import_line[
-            "Dutch"
-        ] = "from seleniumbase.translate.dutch import Testgeval"
-        import_line[
-            "French"
-        ] = "from seleniumbase.translate.french import CasDeBase"
+        import_line["Chinese"] = "from seleniumbase.translate.chinese import 硒测试用例"
+        import_line["Dutch"] = "from seleniumbase.translate.dutch import Testgeval"
+        import_line["French"] = "from seleniumbase.translate.french import CasDeBase"
         import_line[
             "Italian"
         ] = "from seleniumbase.translate.italian import CasoDiProva"
         import_line[
             "Japanese"
         ] = "from seleniumbase.translate.japanese import セレニウムテストケース"
-        import_line[
-            "Korean"
-        ] = "from seleniumbase.translate.korean import 셀레늄_테스트_케이스"
+        import_line["Korean"] = "from seleniumbase.translate.korean import 셀레늄_테스트_케이스"
         import_line[
             "Portuguese"
         ] = "from seleniumbase.translate.portuguese import CasoDeTeste"
@@ -171,8 +163,7 @@ class MD_F:
         ] = "from seleniumbase.translate.spanish import CasoDePrueba"
         if language not in import_line.keys():
             raise Exception(
-                "Invalid language {%s} not in {%s}!"
-                % (language, import_line.keys())
+                "Invalid language {%s} not in {%s}!" % (language, import_line.keys())
             )
         return import_line[language]
 
@@ -196,9 +187,7 @@ class MD_F:
         import_line[
             "Japanese"
         ] = "from seleniumbase.translate.japanese import MasterQA_日本語"
-        import_line[
-            "Korean"
-        ] = "from seleniumbase.translate.korean import MasterQA_한국어"
+        import_line["Korean"] = "from seleniumbase.translate.korean import MasterQA_한국어"
         import_line[
             "Portuguese"
         ] = "from seleniumbase.translate.portuguese import MasterQA_Português"
@@ -210,8 +199,7 @@ class MD_F:
         ] = "from seleniumbase.translate.spanish import MasterQA_Español"
         if language not in import_line.keys():
             raise Exception(
-                "Invalid language {%s} not in {%s}!"
-                % (language, import_line.keys())
+                "Invalid language {%s} not in {%s}!" % (language, import_line.keys())
             )
         return import_line[language]
 
@@ -229,8 +217,7 @@ class MD_F:
         locale_codes["Spanish"] = "es"
         if language not in locale_codes.keys():
             raise Exception(
-                "Invalid language {%s} not in {%s}!"
-                % (language, locale_codes.keys())
+                "Invalid language {%s} not in {%s}!" % (language, locale_codes.keys())
             )
         return locale_codes[language]
 

@@ -54,9 +54,7 @@ def process_file(file_name):
     for url in urls:
         path = url[len(GITHUB_URL) :]  # noqa: E203
         paths.add(path)
-        content = content.replace(
-            url, normalize_path(os.path.relpath(path, directory))
-        )
+        content = content.replace(url, normalize_path(os.path.relpath(path, directory)))
 
     output_path = ROOT_DIR / "mkdocs_build" / file_name
     if not output_path.parent.is_dir():
@@ -92,14 +90,14 @@ def main(*args, **kwargs):
         'style="padding-top: 3px !important;"><iframe loading="lazy" '
         'id="_ytid_36718" data-origwidth="1200" data-origheight="675" '
         'src="https://www.youtube.com/embed/yt_code?enablejsapi=1&amp;'
-        'origin=https://seleniumbase.io&amp;autoplay=0&amp;cc_load_policy=0'
-        '&amp;cc_lang_pref=&amp;iv_load_policy=1&amp;loop=0&amp;'
-        'modestbranding=1&amp;rel=0&amp;fs=1&amp;playsinline=0&amp;'
+        "origin=https://seleniumbase.io&amp;autoplay=0&amp;cc_load_policy=0"
+        "&amp;cc_lang_pref=&amp;iv_load_policy=1&amp;loop=0&amp;"
+        "modestbranding=1&amp;rel=0&amp;fs=1&amp;playsinline=0&amp;"
         'autohide=2&amp;theme=dark&amp;color=red&amp;controls=1&amp;" '
         'class="__youtube_prefs__ no-lazyload" title="YouTube player" '
         'allow="autoplay; encrypted-media" allowfullscreen="" '
         'data-no-lazy="1" data-skipgform_ajax_framebjll="">'
-        '</iframe></div></div></figure>'
+        "</iframe></div></div></figure>"
     )
 
     updated_files_to_process = []
@@ -135,7 +133,7 @@ def main(*args, **kwargs):
             if "<!-- GitHub Only -->" in line:
                 changed = True
                 continue
-            if '<!-- YouTube View -->' in line and "watch?v=" in line:
+            if "<!-- YouTube View -->" in line and "watch?v=" in line:
                 start_pt = line.find("watch?v=") + len("watch?v=")
                 end_pt = line.find('"', start_pt + 1)
                 yt_code = line[start_pt:end_pt]

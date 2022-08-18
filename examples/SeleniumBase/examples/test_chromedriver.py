@@ -33,9 +33,7 @@ class ChromedriverTests(BaseCase):
         )
         print(message)
         if major_chromedriver_version < major_chrome_version:
-            install_sb = (
-                "seleniumbase install chromedriver %s" % major_chrome_version
-            )
+            install_sb = "seleniumbase install chromedriver %s" % major_chrome_version
             pr_install_sb = c1 + install_sb + cr
             up_msg = "You may want to upgrade your version of chromedriver:"
             up_msg = c4 + up_msg + cr
@@ -48,9 +46,7 @@ class ChromedriverTests(BaseCase):
             message = "*\n* %s\n*\n* See: %s" % (up_msg, up_url)
             print(message)
         else:
-            up_msg = (
-                "Success! Your chromedriver is compatible with your Chrome!"
-            )
+            up_msg = "Success! Your chromedriver is compatible with your Chrome!"
             up_msg = c1 + up_msg + cr
             message = "*\n* %s\n" % up_msg
             print(message)

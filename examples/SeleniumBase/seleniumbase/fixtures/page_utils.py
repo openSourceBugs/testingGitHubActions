@@ -79,11 +79,11 @@ def get_link_text_from_selector(selector):
     A basic method to get the link text from a link text selector.
     """
     if selector.startswith("link="):
-        return selector[len("link="):]
+        return selector[len("link=") :]
     elif selector.startswith("link_text="):
-        return selector[len("link_text="):]
+        return selector[len("link_text=") :]
     elif selector.startswith("text="):
-        return selector[len("text="):]
+        return selector[len("text=") :]
     return selector
 
 
@@ -92,17 +92,17 @@ def get_partial_link_text_from_selector(selector):
     A basic method to get the partial link text from a partial link selector.
     """
     if selector.startswith("partial_link="):
-        return selector[len("partial_link="):]
+        return selector[len("partial_link=") :]
     elif selector.startswith("partial_link_text="):
-        return selector[len("partial_link_text="):]
+        return selector[len("partial_link_text=") :]
     elif selector.startswith("partial_text="):
-        return selector[len("partial_text="):]
+        return selector[len("partial_text=") :]
     elif selector.startswith("p_link="):
-        return selector[len("p_link="):]
+        return selector[len("p_link=") :]
     elif selector.startswith("p_link_text="):
-        return selector[len("p_link_text="):]
+        return selector[len("p_link_text=") :]
     elif selector.startswith("p_text="):
-        return selector[len("p_text="):]
+        return selector[len("p_text=") :]
     return selector
 
 
@@ -111,9 +111,9 @@ def get_name_from_selector(selector):
     A basic method to get the name from a name selector.
     """
     if selector.startswith("name="):
-        return selector[len("name="):]
+        return selector[len("name=") :]
     if selector.startswith("&"):
-        return selector[len("&"):]
+        return selector[len("&") :]
     return selector
 
 
@@ -148,9 +148,7 @@ def _get_unique_links(page_url, soup):
     Includes:
         "a"->"href", "img"->"src", "link"->"href", and "script"->"src" links.
     """
-    if not page_url.startswith("http://") and not page_url.startswith(
-        "https://"
-    ):
+    if not page_url.startswith("http://") and not page_url.startswith("https://"):
         return []
     prefix = "http:"
     if page_url.startswith("https:"):
@@ -220,9 +218,7 @@ def _get_link_status_code(link, allow_redirects=False, timeout=5):
     """
     status_code = None
     try:
-        response = requests.get(
-            link, allow_redirects=allow_redirects, timeout=timeout
-        )
+        response = requests.get(link, allow_redirects=allow_redirects, timeout=timeout)
         status_code = response.status_code
     except Exception:
         status_code = 404
@@ -254,9 +250,7 @@ def _download_file_to(file_url, destination_folder, new_file_name=None):
 
 
 def _save_data_as(data, destination_folder, file_name):
-    out_file = codecs.open(
-        destination_folder + "/" + file_name, "w+", encoding="utf-8"
-    )
+    out_file = codecs.open(destination_folder + "/" + file_name, "w+", encoding="utf-8")
     out_file.writelines(data)
     out_file.close()
 

@@ -13,10 +13,7 @@ class ChromedriverTests(BaseCase):
         chromedriver_version = self.get_chromedriver_version()
         major_chromedriver_version = chromedriver_version.split(".")[0]
         install_sb = "sbase install chromedriver %s" % major_chrome_version
-        if (
-            int(major_chromedriver_version) < 73
-            and int(major_chrome_version) >= 73
-        ):
+        if int(major_chromedriver_version) < 73 and int(major_chrome_version) >= 73:
             message = (
                 'Your version of chromedriver: "%s"\n  '
                 'is too old for your version of Chrome: "%s"\n'

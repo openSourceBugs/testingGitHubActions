@@ -264,9 +264,7 @@ def build_report(
     archived_results_file = report_log_path + "/" + HTML_REPORT
     shutil.copyfile(results_file, archived_results_file)
     print("\n* The latest html report page is located at:\n" + results_file)
-    print(
-        "\n* Files saved for this report are located at:\n" + report_log_path
-    )
+    print("\n* Files saved for this report are located at:\n" + report_log_path)
     print("")
     if show_report:
         from seleniumbase import get_driver

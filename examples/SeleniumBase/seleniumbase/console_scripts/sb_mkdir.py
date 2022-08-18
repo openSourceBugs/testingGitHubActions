@@ -78,9 +78,7 @@ def main():
     elif dir_name.startswith("-"):
         error_msg = 'Directory name cannot start with "-"!'
     elif os.path.exists(os.getcwd() + "/" + dir_name):
-        error_msg = (
-            'Directory "%s" already exists in this directory!' % dir_name
-        )
+        error_msg = 'Directory "%s" already exists in this directory!' % dir_name
     if error_msg:
         error_msg = c5 + "ERROR: " + error_msg + cr
         invalid_run_command(error_msg)
@@ -333,9 +331,7 @@ def main():
     data.append('        self.assert_text("CHECKOUT: OVERVIEW")')
     data.append('        self.assert_text("Backpack", "div.cart_item")')
     data.append('        self.click("button#finish")')
-    data.append(
-        '        self.assert_exact_text("THANK YOU FOR YOUR ORDER", "h2")'
-    )
+    data.append('        self.assert_exact_text("THANK YOU FOR YOUR ORDER", "h2")')
     data.append("        self.assert_element('img[alt=\"Pony Express\"]')")
     data.append('        self.js_click("a#logout_sidebar_link")')
     data.append("")
@@ -373,21 +369,15 @@ def main():
     data.append('        self.press_right_arrow("#myslider", times=5)')
     data.append("        self.assert_element('progress[value=\"100\"]')")
     data.append("        self.assert_element('meter[value=\"0.25\"]')")
-    data.append(
-        '        self.select_option_by_text("#mySelect", "Set to 75%")'
-    )
+    data.append('        self.select_option_by_text("#mySelect", "Set to 75%")')
     data.append("        self.assert_element('meter[value=\"0.75\"]')")
     data.append('        self.assert_false(self.is_element_visible("img"))')
     data.append('        self.switch_to_frame("#myFrame1")')
     data.append('        self.assert_true(self.is_element_visible("img"))')
     data.append("        self.switch_to_default_content()")
-    data.append(
-        '        self.assert_false(self.is_text_visible("iFrame Text"))'
-    )
+    data.append('        self.assert_false(self.is_text_visible("iFrame Text"))')
     data.append('        self.switch_to_frame("#myFrame2")')
-    data.append(
-        '        self.assert_true(self.is_text_visible("iFrame Text"))'
-    )
+    data.append('        self.assert_true(self.is_text_visible("iFrame Text"))')
     data.append("        self.switch_to_default_content()")
     data.append('        self.assert_false(self.is_selected("#radioButton2"))')
     data.append('        self.click("#radioButton2")')
@@ -409,8 +399,7 @@ def main():
     data.append('        self.click(".fBox")')
     data.append('        self.assert_true(self.is_selected(".fBox"))')
     data.append("        self.switch_to_default_content()")
-    data.append(
-        '        self.assert_element_not_visible("div#drop2 img#logo")')
+    data.append('        self.assert_element_not_visible("div#drop2 img#logo")')
     data.append('        self.drag_and_drop("img#logo", "div#drop2")')
     data.append('        self.assert_element("div#drop2 img#logo")')
     data.append('        self.assert_link_text("seleniumbase.com")')
@@ -442,13 +431,10 @@ def main():
     data.append("        ]")
     data.append("    )")
     data.append(
-        "    def test_parameterized_google_search("
-        "self, search_term, expected_text):"
+        "    def test_parameterized_google_search(" "self, search_term, expected_text):"
     )
     data.append('        self.open("https://google.com/ncr")')
-    data.append(
-        '        self.type(\'input[title="Search"]\', search_term + "\\n")'
-    )
+    data.append('        self.type(\'input[title="Search"]\', search_term + "\\n")')
     data.append('        self.assert_element("#result-stats")')
     data.append('        self.assert_text(expected_text, "#search")')
     data.append("")
@@ -598,9 +584,7 @@ def main():
     data.append("        self.assert_element(HomePage.search_button)")
     data.append("        self.assert_element(HomePage.feeling_lucky_button)")
     data.append("        self.click(HomePage.search_button)")
-    data.append(
-        '        self.assert_text("github.com", ResultsPage.search_results)'
-    )
+    data.append('        self.assert_text("github.com", ResultsPage.search_results)')
     data.append("        self.assert_element(ResultsPage.images_link)")
     data.append("")
     file_path = "%s/%s" % (dir_name_3, "google_test.py")
@@ -614,9 +598,7 @@ def main():
     data.append("    search_box = 'input[title=\"Search\"]'")
     data.append("    list_box = '[role=\"listbox\"]'")
     data.append("    search_button = 'input[value=\"Google Search\"]'")
-    data.append(
-        '    feeling_lucky_button = """input[value="I\'m Feeling Lucky"]"""'
-    )
+    data.append('    feeling_lucky_button = """input[value="I\'m Feeling Lucky"]"""')
     data.append("")
     data.append("")
     data.append("class ResultsPage(object):")
@@ -645,13 +627,9 @@ def main():
     data.append("")
     data.append("class MyTests(BaseCase):")
     data.append("    def test_swag_labs_login(self):")
-    data.append(
-        '        LoginPage().login_to_swag_labs(self, "standard_user")'
-    )
+    data.append('        LoginPage().login_to_swag_labs(self, "standard_user")')
     data.append('        self.assert_element("#inventory_container")')
-    data.append(
-        "        self.assert_element('div:contains(\"Sauce Labs Backpack\")')"
-    )
+    data.append("        self.assert_element('div:contains(\"Sauce Labs Backpack\")')")
     data.append("")
     file_path = "%s/%s" % (dir_name_3, "swag_labs_test.py")
     file = codecs.open(file_path, "w+", "utf-8")
@@ -674,9 +652,7 @@ def main():
     data.append("    def test_swag_labs_login(self, sb):")
     data.append('        LoginPage().login_to_swag_labs(sb, "standard_user")')
     data.append('        sb.assert_element("#inventory_container")')
-    data.append(
-        "        sb.assert_element('div:contains(\"Sauce Labs Backpack\")')"
-    )
+    data.append("        sb.assert_element('div:contains(\"Sauce Labs Backpack\")')")
     data.append("")
     file_path = "%s/%s" % (dir_name_3, "sb_swag_test.py")
     file = codecs.open(file_path, "w+", "utf-8")

@@ -1,7 +1,7 @@
 """ Laser Power Calculator page objects"""
-#this is a very very basic page object.  Making it more advanced would be a TODO
+# this is a very very basic page object.  Making it more advanced would be a TODO
 class LaserCalculatorPage(object):
-    diameter_box = '#beamDiameter'
+    diameter_box = "#beamDiameter"
     max_power_avg = "#enerpow1"
     tophat = "input[value*='Tophat']"
     gaussian = "input[value*='Gaussian']"

@@ -31,7 +31,7 @@ def log_screenshot(test_logpath, driver, screenshot=None, get=False):
 
 
 def get_master_time():
-    """ Returns (timestamp, the_date, the_time) """
+    """Returns (timestamp, the_date, the_time)"""
     import datetime
 
     timestamp = str(int(time.time())) + "  (Unix Timestamp)"
@@ -107,9 +107,7 @@ def log_test_failure_data(test, test_logpath, driver, browser, url=None):
     except Exception:
         pass
     try:
-        driver_name, driver_version = get_driver_name_and_version(
-            driver, browser
-        )
+        driver_name, driver_version = get_driver_name_and_version(driver, browser)
     except Exception:
         pass
     if browser_version:
@@ -178,9 +176,7 @@ def log_test_failure_data(test, test_logpath, driver, browser, url=None):
             or the_traceback.endswith("StopIteration\n")
         ):
             good_stack = []
-            the_stacks = traceback.format_list(
-                traceback.extract_tb(sys.last_traceback)
-            )
+            the_stacks = traceback.format_list(traceback.extract_tb(sys.last_traceback))
             for stack in the_stacks:
                 if "/site-packages/pluggy/" not in stack:
                     if "/site-packages/_pytest/" not in stack:
@@ -208,9 +204,7 @@ def log_skipped_test_data(test, test_logpath, driver, browser, reason):
     except Exception:
         pass
     try:
-        driver_name, driver_version = get_driver_name_and_version(
-            driver, browser
-        )
+        driver_name, driver_version = get_driver_name_and_version(driver, browser)
     except Exception:
         pass
     if browser_version:
@@ -367,14 +361,12 @@ def copytree(src, dst, symlinks=False, ignore=None):
         if os.path.isdir(s):
             copytree(s, d, symlinks, ignore)
         else:
-            if not os.path.exists(d) or (
-                os.stat(s).st_mtime - os.stat(d).st_mtime > 1
-            ):
+            if not os.path.exists(d) or (os.stat(s).st_mtime - os.stat(d).st_mtime > 1):
                 shutil.copy2(s, d)
 
 
 def archive_logs_if_set(log_path, archive_logs=False):
-    """ Handle Logging """
+    """Handle Logging"""
     arg_join = " ".join(sys.argv)
     if ("-n" in sys.argv) or ("-n=" in arg_join) or (arg_join == "-c"):
         return  # Skip if multithreaded
@@ -402,7 +394,7 @@ def archive_logs_if_set(log_path, archive_logs=False):
 
 
 def log_folder_setup(log_path, archive_logs=False):
-    """ Handle Logging """
+    """Handle Logging"""
     if log_path.endswith("/"):
         log_path = log_path[:-1]
     if not os.path.exists(log_path):

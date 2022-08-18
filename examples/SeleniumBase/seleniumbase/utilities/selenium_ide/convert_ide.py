@@ -139,9 +139,7 @@ def main():
             continue
 
         # Handle page loads
-        data = re.match(
-            r"^(\s*)driver\.get\((self\.base_url \+ \"/\S*\")\)\s*$", line
-        )
+        data = re.match(r"^(\s*)driver\.get\((self\.base_url \+ \"/\S*\")\)\s*$", line)
         if data:
             whitespace = data.group(1)
             url = data.group(2)
@@ -165,8 +163,7 @@ def main():
 
         # Handle .find_element_by_id() + .click()
         data = re.match(
-            r"""^(\s*)driver\.find_element_by_id\(\"(\S+)\"\)"""
-            r"""\.click\(\)\s*$""",
+            r"""^(\s*)driver\.find_element_by_id\(\"(\S+)\"\)""" r"""\.click\(\)\s*$""",
             line,
         )
         if data:
@@ -754,8 +751,7 @@ def main():
 
         if in_inefficient_wait:
             data = re.match(
-                r"""^\s*if self.is_element_present\("([\S\s]+)"\)"""
-                r""": break\s*$""",
+                r"""^\s*if self.is_element_present\("([\S\s]+)"\)""" r""": break\s*$""",
                 line,
             )
             if data:
@@ -768,8 +764,7 @@ def main():
                 continue
 
             data = re.match(
-                r"""^\s*if self.is_element_present\('([\S\s]+)'\)"""
-                r""": break\s*$""",
+                r"""^\s*if self.is_element_present\('([\S\s]+)'\)""" r""": break\s*$""",
                 line,
             )
             if data:
@@ -826,8 +821,7 @@ def main():
             selector = js_utils.escape_quotes_if_needed(selector)
             if int(line_num) < num_lines - 1:
                 regex_string = (
-                    r"""^\s*self.click\(["|']"""
-                    "" + selector + r"""["|']\)\s*$"""
+                    r"""^\s*self.click\(["|']""" "" + selector + r"""["|']\)\s*$"""
                 )
                 data2 = re.match(regex_string, lines[line_num + 1])
                 if data2:
@@ -848,9 +842,7 @@ def main():
     num_lines = len(lines)
     for line_num in range(len(lines)):
         data = re.match(
-            r"""^\s*self.click"""
-            r"""\((["|'])([\S\s]+)(["|'])\)"""
-            r"""\s*$""",
+            r"""^\s*self.click""" r"""\((["|'])([\S\s]+)(["|'])\)""" r"""\s*$""",
             lines[line_num],
         )
         if data:
@@ -899,13 +891,9 @@ def main():
     if has_unicode and sys.version_info[0] < 3:
         seleniumbase_code = "# -*- coding: utf-8 -*-\n"
     if uses_keys:
-        seleniumbase_code += (
-            "from selenium.webdriver.common.keys import Keys\n"
-        )
+        seleniumbase_code += "from selenium.webdriver.common.keys import Keys\n"
     if uses_select:
-        seleniumbase_code += (
-            "from selenium.webdriver.support.ui import Select\n"
-        )
+        seleniumbase_code += "from selenium.webdriver.support.ui import Select\n"
     for line in seleniumbase_lines:
         seleniumbase_code += line
         seleniumbase_code += "\n"

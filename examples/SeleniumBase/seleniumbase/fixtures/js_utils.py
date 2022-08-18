@@ -249,9 +249,7 @@ def safe_execute_script(driver, script):
         driver.execute_script(script)
 
 
-def wait_for_css_query_selector(
-    driver, selector, timeout=settings.SMALL_TIMEOUT
-):
+def wait_for_css_query_selector(driver, selector, timeout=settings.SMALL_TIMEOUT):
     element = None
     start_ms = time.time() * 1000.0
     stop_ms = start_ms + (timeout * 1000.0)
@@ -641,9 +639,7 @@ def set_messenger_theme(
         "bottom_right",
     ]
     if location not in valid_locations:
-        raise Exception(
-            "Location: %s is not in %s!" % (location, valid_locations)
-        )
+        raise Exception("Location: %s is not in %s!" % (location, valid_locations))
 
     if location == "top_left":
         messenger_location = "messenger-on-top messenger-on-left"
@@ -681,8 +677,7 @@ def post_message(driver, message, msg_dur, style="info"):
     message = escape_quotes_if_needed(message)
     messenger_script = (
         """Messenger().post({message: "%s", type: "%s", """
-        """hideAfter: %s, hideOnNavigate: true});"""
-        % (message, style, msg_dur)
+        """hideAfter: %s, hideOnNavigate: true});""" % (message, style, msg_dur)
     )
     try:
         driver.execute_script(messenger_script)
