@@ -11,7 +11,6 @@ class FrameTests(BaseCase):
         self.switch_to_default_content()  # Exit all iFrames
         self.click("button#runbtn")
         self.switch_to_frame("iframeResult")  # Go back inside 1st iframe
-        #self.highlight('iframe[title="Iframe Example"]')
 
     def test_set_content_to_frame(self):
         self.open("https://seleniumbase.io/w3schools/iframes.html")
