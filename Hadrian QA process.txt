@@ -1,3 +1,7 @@
+Note that Hadrian is scamming people and asking for free work at this time.  Do not entertain an interview with them
+
+
+
 There are many pitfalls and assumptions associated with the following suggested practices for the QA process.
 As there are shops ranging from pure waterfall to Agile/Scrum, the suggestions in this document are geared more towards an "agile" environment and the product in this example would be Turbo Tax.
 
