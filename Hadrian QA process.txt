@@ -1,5 +1,5 @@
 Note that Hadrian is scamming people and asking for free work at this time.  Do not entertain an interview with them
-DING
+DONG
 
 
 There are many pitfalls and assumptions associated with the following suggested practices for the QA process.
